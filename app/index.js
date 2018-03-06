@@ -4,7 +4,7 @@ import R from 'ramda'
 import chalk from 'chalk'
 import config from '../config'
 
-const MIDDLEWARES = ['router']
+const MIDDLEWARES = ['cros-conf','mysql','general','router']
  
 const userMiddlewares = (app) => {
   R.map(

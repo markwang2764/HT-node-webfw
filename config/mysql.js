@@ -1,6 +1,6 @@
 module.exports = {
   DATABASE: 'nodesql',
   USERNAME: 'root',
-  PASSWORD: 'w',
+  PASSWORD: '',
   PORT: '3306',
 }

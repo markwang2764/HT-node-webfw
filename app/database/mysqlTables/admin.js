@@ -1,5 +1,4 @@
-import query from '../middlewares/database/mysql'
-console.log(query)
+import {query} from '../../middlewares/mysql'
 const admin=
 `create table if not exists users(
  id INT NOT NULL AUTO_INCREMENT,
