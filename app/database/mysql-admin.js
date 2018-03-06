@@ -27,12 +27,11 @@ let findDataByName = function (  name ) {
       `
   return query( _sql)
 }
-// 通过文章的名字查找用户
-let findDataByUser = function (  name ) {
-  let _sql = `
-    SELECT * from posts
-      where name="${name}"
-      `
-  return query( _sql)
-}
 
+
+export default {
+  query,
+  createTable,
+  insertData,
+  findDataByName
+}
