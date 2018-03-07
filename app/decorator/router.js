@@ -31,7 +31,6 @@ export class Route {
 
     R.forEach(
       ({ target, method, path, callback }) => {
-        console.log(callback)
         const prefix = resolvePath(target[pathPrefix])
         router[method](prefix + path, ...callback)
       }
@@ -53,7 +52,6 @@ export const convert = middleware => (target, key, descriptor) => {
 }
 
 export const setRouter = method => path => (target, key, descriptor)=> {
-  console.log(target[key])
   routeMap.push({
     target,
     method,

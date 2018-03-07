@@ -5,23 +5,24 @@ import config from '../../config'
 
 mongoose.Promise = global.Promise
 
-glob.sync(join(__dirname, '../database/schema', '**/*.js')).forEach(require)
+glob.sync(join(__dirname, '../database/mongoSchema', '**/*.js')).forEach(require)
 
 export const database = app => {
-  const { db } = config
-
+  const { mongodb } = config
+  let maxConnectTimes = 0
   if (config.env === 'development') {
     mongoose.set('debug', true)
   }
 
-  mongoose.connect(db, {
-    useMongoClient: true
-  })
+  mongoose.connect(mongodb)
 
   mongoose.connection.on('disconnected', () => {
-    mongoose.connect(db, {
-      useMongoClient: true
-    })
+    maxConnectTimes ++
+      if(maxConnectTimes<5){
+        mongoose.connect(mongodb)
+      }else{
+        throw new Error('数据库出错')
+      }
   })
 
   mongoose.connection.on('error', err => {
@@ -29,6 +30,6 @@ export const database = app => {
   })
 
   mongoose.connection.once('open', () => {
-    console.log('Connected to MongoDB -> ', db)
+    console.log('Connected to MongoDB -> ', mongodb)
   })
 }

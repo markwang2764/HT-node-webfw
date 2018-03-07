@@ -3,8 +3,8 @@ import { resolve } from 'path'
 import R from 'ramda'
 import chalk from 'chalk'
 import config from '../config'
-
-const MIDDLEWARES = ['cros-conf','mysql','general','router']
+require('./utils')
+const MIDDLEWARES = ['cros-conf','mongodb','general','router']
  
 const userMiddlewares = (app) => {
   R.map(
@@ -29,5 +29,6 @@ async function start(){
       : `App listening on port ${port}`
     )
   })
+  
 }
 start()

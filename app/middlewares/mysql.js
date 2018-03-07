@@ -16,15 +16,10 @@ export const query = function( sql, values ) {
     pool.getConnection(function(err, connection) {
       if (err) {
         console.log('连接mysql失败')
-        console.log(err)
         resolve( err )
       } else {
-        console.log('连接mysql成功')
         connection.query(sql, values, ( err, rows) => {
-          if ( err ) {
-            reject( err )
-          } else {
-            console.log('建表成功'+rows)
+          if ( !err ) {
             resolve( rows )
           }
           connection.release()
@@ -33,5 +28,4 @@ export const query = function( sql, values ) {
     })
   })
 }
-glob.sync(join(__dirname, '../database/mysqlTables', '**/*.js')).forEach(require)
 

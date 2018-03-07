@@ -1,21 +1,17 @@
+import utils from 'utility'
+import { md5Salt } from "../../config";
 import adminModel from '../database/mysqlTables/admin'
 let success = false
 let data = 0
 let msg = ''
-export async function findDataByName(name, password){
+export async function findDataByName(name, pass){
   await adminModel.findDataByName(name)
   .then(result=>{
-    // var res=JSON.parse(JSON.stringify(reslut))
-    console.log(result)
-    if (result.length){
-      try {
+    var res=JSON.parse(JSON.stringify(result))[0]
+    if (name === res['name'] && md5Pwd(pass) === res['pass']) {
         data = 1
         success = true
         msg= '登录成功'
-      }catch (error){
-        resolve(error)
-        console.log(error)
-      }
     }else{
       data = 0
       success = false
@@ -28,16 +24,15 @@ export async function findDataByName(name, password){
     msg
   }
 }
-export async function insertUserData(name, password) {
+export async function insertUserData(name, pass) {
  await adminModel.findDataByName(name)
   .then(result=>{
     // var res=JSON.parse(JSON.stringify(reslut))
-    console.log(result)
     if (result.length){
       try {
         data = 0
         success = false
-        msg= '用户存在'
+        msg= '用户名重复'
       }catch (error){
         resolve(error)
         console.log(error)
@@ -46,7 +41,7 @@ export async function insertUserData(name, password) {
       data = 1
       success = true
       msg= '注册成功'
-      adminModel.insertData([name, password])
+      adminModel.insertData([name, md5Pwd(pass)])
     }
   })
   return {
@@ -54,4 +49,7 @@ export async function insertUserData(name, password) {
     data,
     msg
   }
+}
+function md5Pwd(pwd) {
+  return utils.md5(utils.md5(pwd+md5Salt))
 }

@@ -1,5 +1,4 @@
 import config from '../../config';
-console.log(config)
 function crosConf (ctx,next) {
   if (ctx.request.header.host.split(':')[0] === 'localhost' || ctx.request.header.host.split(':')[0] === '127.0.0.1') {
       ctx.set('Access-Control-Allow-Origin', '*')

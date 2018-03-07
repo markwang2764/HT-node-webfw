@@ -5,8 +5,7 @@ import {
   Get,
   Required,
 } from '../decorator/router'
-import { insertUserData,findDataByName } from '../service/mysql-admin-service';
-
+import { insertUserData,findDataByName } from '../service/mongo-admin-service'
 @Controller('/admin')
 export default class AdminRouter {
   @Post('/register')
@@ -15,7 +14,7 @@ export default class AdminRouter {
   })
   async adminRegister (ctx, next) {
     const { name, password } = ctx.request.body
-    const result = await insertUserData(name,password)
+    const result = await insertUserData(name.Trim(),password.Trim())
     return (ctx.body = result)
   }
   @Post('/login')
@@ -24,7 +23,7 @@ export default class AdminRouter {
   })
   async adminLogin (ctx, next) {
     const { name, password } = ctx.request.body
-    const result = await findDataByName(name,password)
+    const result = await findDataByName(name.Trim(),password.Trim())
     return (ctx.body = result)
   }
 }
