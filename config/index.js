@@ -6,6 +6,7 @@ module.exports = {
   HOST,
   env,
   md5Salt: 'ht_node_&&**!!',
+  tokenKey: 'wqdjkwl1e21FQlk1j2',
   ...mysql,
   ...mongo,
   port: env=='development'?4455:8080
