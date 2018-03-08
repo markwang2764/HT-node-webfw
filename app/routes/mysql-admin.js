@@ -56,10 +56,9 @@ export default class AdminRouter {
     const { name, password } = ctx.request.body
     console.log(name,password)
     const result = await findDataByName(name.Trim(),password.Trim())
-    console.log(result)
     if(result.success){
       let username = result.name
-      let token = jwt.sign(username, tokenKey)
+      let token = jwt.sign({authorization:username,exp: Math.floor(Date.now() / 1000) + (24 * 60 * 60)}, tokenKey)
       return (ctx.body = {...result,token})
     }
     return (ctx.body = result)
