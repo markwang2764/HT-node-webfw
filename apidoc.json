@@ -1,0 +1,8 @@
+{
+  "name": "弘泰 node.js api文档",
+  "description": "apiDoc basic example",
+  "apidoc": {
+    "title": "弘泰 node.js api文档",
+    "url" : "http://api.github.com/v1"
+  }
+}
