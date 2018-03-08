@@ -6,7 +6,7 @@ import {
   Required,
 } from '../decorator/router'
 
-@Controller('/home')
+@Controller('/api/home')
 export default class Home {
    /**
  * @apiGroup home
@@ -14,14 +14,11 @@ export default class Home {
  * @apiSuccessExample Success-Response:
  *     HTTP/1.1 200 OK
  *     {
- *       "data": "1",
- *       "success": true,
- *       "msg": "注册成功" 
+ *       "token": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ind3IiwiZXhwIjoxNTIwNTg0MzM5LCJpYXQiOjE1MjA0OTc5Mzl9.41NQDKypfVX2q7V9oicfwWSH1k92-DAv4G6JD"
  *     }
  */
 @Get('/')
 async getHome (ctx, next) {
-  console.log(ctx.header)
   ctx.body = {
     token: ctx.header.authorization
   }

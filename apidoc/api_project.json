@@ -1,0 +1,1 @@
+{  "name": "弘泰 node.js api文档",  "version": "1.0.0",  "description": "apiDoc basic example",  "apidoc": "0.3.0",  "sampleUrl": false,  "defaultVersion": "0.0.0",  "generator": {    "name": "apidoc",    "time": "2018-03-08T08:38:45.500Z",    "url": "http://apidocjs.com",    "version": "0.17.6"  }}

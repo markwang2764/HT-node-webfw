@@ -9,7 +9,7 @@ import jwt from 'jsonwebtoken'
 import {tokenKey} from '../../config'
 import { insertUserData,findDataByName } from '../service/mysql-admin-service';
 
-@Controller('/admin')
+@Controller('/api/admin')
 export default class AdminRouter {
  /**
  * @apiGroup admin
@@ -58,7 +58,7 @@ export default class AdminRouter {
     const result = await findDataByName(name.Trim(),password.Trim())
     if(result.success){
       let username = result.name
-      let token = jwt.sign({authorization:username,exp: Math.floor(Date.now() / 1000) + (24 * 60 * 60)}, tokenKey)
+      let token = jwt.sign({username,exp: Math.floor(Date.now() / 1000) + (24 * 60 * 60)}, tokenKey)
       return (ctx.body = {...result,token})
     }
     return (ctx.body = result)
