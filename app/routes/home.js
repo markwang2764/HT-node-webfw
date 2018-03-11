@@ -23,4 +23,15 @@ async getHome (ctx, next) {
     token: ctx.header.authorization
   }
  }
+
+//  @Post('/test')
+// async testNewApi (ctx, next) {
+//   const msg = ctx.request.body
+//   ctx.body = {
+//     code : 1,
+//     success: true,
+//     data: '新增的测试接口',
+//     msg: msg
+//   }
+//  }
 }

@@ -1,7 +1,6 @@
 const mysql = require('mysql');
 const config = require('../../config')
-import { join } from 'path'
-import glob from 'glob'
+
 const pool  = mysql.createPool({
   host     : config.HOST,
   user     : config.USERNAME,

@@ -4,7 +4,7 @@ import R from 'ramda'
 import chalk from 'chalk'
 import config from '../config'
 require('./utils')
-const MIDDLEWARES = ['cros-conf','mysql','general','router']
+const MIDDLEWARES = ['cros-conf','mongodb','general','router']
  
 const userMiddlewares = (app) => {
   R.map(
@@ -19,9 +19,8 @@ const userMiddlewares = (app) => {
 }
 async function start(){
   const app = new Koa()
-  const { port } = config
+  const { port, env } = config
   await userMiddlewares(app)
-
   const server = app.listen(port, () => {
     console.log(
       process.env.NODE_ENV === 'development'
