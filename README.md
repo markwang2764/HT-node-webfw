@@ -3,7 +3,7 @@
 
 ```html
   ht-node
-  |--apidoc(自动生成)
+  |--apidoc(api文档)
   |--app
      |——dababase(数据库)
      |   |——mongoSchemas(mongoose模型文件夹)
