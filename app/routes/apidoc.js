@@ -11,6 +11,6 @@ import {
 export default class Apidoc {
 @Get('/')
 async Apidoc (ctx, next) {
-   await ctx.render('index.html')
+   await ctx.render('apidoc.html')
  }
 }
