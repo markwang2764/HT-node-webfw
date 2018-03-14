@@ -206,3 +206,10 @@ it("should return success",function(done){
   }
 }
 ```
+## npm 命令
+ 
+* npm start : 启动服务
+* npm test test/test.js : 测试用例
+* npm run fdeploy : 第一次线上部署
+* npm run deploy : 正常部署
+* npm run api : 导出apidoc
